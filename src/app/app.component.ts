@@ -25,7 +25,6 @@ import { EditService } from './edit.service';
                 [data]="view | async"
                 [pageSize]="gridState.take"
                 [skip]="gridState.skip"
-                [sort]="gridState.sort"
                 [pageable]="true"
                 (dataStateChange)="onStateChange($event)"
                 (edit)="editHandler($event)"
@@ -34,6 +33,7 @@ import { EditService } from './edit.service';
                 (remove)="removeHandler($event)"
                 (add)="addHandler($event, myForm)"
                 [navigable]="true"
+                filterable="menu"
             >
                 <ng-template kendoGridToolbarTemplate>
                     <button kendoGridAddCommand type="button">Add new</button>
@@ -81,7 +81,6 @@ import { EditService } from './edit.service';
 export class AppComponent implements OnInit {
   public view: Observable<GridDataResult>;
   public gridState: State = {
-    sort: [],
     skip: 0,
     take: 5,
   };
